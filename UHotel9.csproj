@@ -1,0 +1,119 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="DevExpress.CrossPlatform.Printing.DrawingEngine" Version="1.0.14" />
+    <PackageReference Include="DevExpress.Data" Version="23.2.3" />
+    <PackageReference Include="EntityFramework" Version="6.4.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v20.1">
+      <HintPath>C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.BonusSkins.v20.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Charts.Designer.v20.1">
+      <HintPath>C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Charts.Designer.v20.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Charts.v20.1.Core">
+      <HintPath>C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Charts.v20.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.CodeConverter.v20.1">
+      <HintPath>C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.CodeConverter.v20.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.CodeParser.v20.1">
+      <HintPath>C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.CodeParser.v20.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Dashboard.v20.1.Core">
+      <HintPath>C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Dashboard.v20.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Dashboard.v20.1.Web">
+      <HintPath>C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Dashboard.v20.1.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Dashboard.v20.1.Web.Mvc">
+      <HintPath>C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Dashboard.v20.1.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Dashboard.v20.1.Web.Mvc5">
+      <HintPath>C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Dashboard.v20.1.Web.Mvc5.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Dashboard.v20.1.Web.WebForms">
+      <HintPath>C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Dashboard.v20.1.Web.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Dashboard.v20.1.Win">
+      <HintPath>C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Dashboard.v20.1.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Dashboard.v20.1.Wpf">
+      <HintPath>C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Dashboard.v20.1.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.Desktop.v20.1">
+      <HintPath>C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Data.Desktop.v20.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v20.1">
+      <HintPath>C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Data.v20.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.DataAccess.v20.1">
+      <HintPath>C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.DataAccess.v20.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.DataAccess.v20.1.UI">
+      <HintPath>C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.DataAccess.v20.1.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.DemoData.v20.1">
+      <HintPath>C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.DemoData.v20.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.DemoReports.v20.1">
+      <HintPath>C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.DemoReports.v20.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.DevAV.v20.1.Data">
+      <HintPath>C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.DevAV.v20.1.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.DevAV.v20.1.Reports">
+      <HintPath>C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.DevAV.v20.1.Reports.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Diagram.v20.1.Core">
+      <HintPath>C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Diagram.v20.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Dialogs.v20.1.Core">
+      <HintPath>C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Dialogs.v20.1.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Docs.v20.1">
+      <HintPath>C:\Program Files (x86)\DevExpress 20.1\Components\Bin\Framework\DevExpress.Docs.v20.1.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
