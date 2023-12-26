@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 using UHotel9.Tables;
 
 namespace UHotel9
@@ -21,7 +22,7 @@ namespace UHotel9
         private FormStack formStack = new FormStack();
         private void ShowNewForm()
         {
-            // Show the new form and push it onto the stack
+            
             var newForm = new AnotherForm(formStack);
             formStack.Push(newForm);
             newForm.Show();
@@ -51,14 +52,7 @@ namespace UHotel9
             //Room EditedRoom = db.Rooms.Where(rE => rE.roomId == this.room.roomId).FirstOrDefault();
             //if (EditedRoom != null)
             //{
-            this.room.type = (RoomType)RoomTypeEditBox.SelectedIndex;
-            this.room.price = decimal.Parse(RoomPriceEditBox.Text);
-            this.room.floorNumber = int.Parse(RoomFloorNumberEditBox.Text);
-
-            db.Rooms.Update(this.room);
-            db.SaveChanges();
-            MessageBox.Show("Updated");
-            Room_Info_Report rir = new Room_Info_Report();
+           
             //}
 
         }
@@ -79,6 +73,18 @@ namespace UHotel9
                 // For example, you can close the current form:
                 this.Close();
             }
+        }
+
+        private void SaveButton_Click_1(object sender, EventArgs e)
+        {
+            this.room.type = (RoomType)RoomTypeEditBox.SelectedIndex;
+            this.room.price = decimal.Parse(RoomPriceEditBox.Text);
+            this.room.floorNumber = int.Parse(RoomFloorNumberEditBox.Text);
+
+            db.Rooms.Update(this.room);
+            db.SaveChanges();
+            MessageBox.Show("Updated");
+            Room_Info_Report rir = new Room_Info_Report();
         }
     }
 }

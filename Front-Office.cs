@@ -17,7 +17,7 @@ namespace UHotel9
         private FormStack formStack = new FormStack();
         private void ShowNewForm()
         {
-            // Show the new form and push it onto the stack
+
             var newForm = new AnotherForm(formStack);
             formStack.Push(newForm);
             newForm.Show();
@@ -73,9 +73,8 @@ namespace UHotel9
             }
             else
             {
-                // If there is no previous form, you might want to close the current form or take other actions.
-                // For example, you can close the current form:
-                this.Close();
+
+                this.Hide();
             }
         }
 
@@ -96,6 +95,12 @@ namespace UHotel9
             Reservation_Data rs = new Reservation_Data();
             rs.Show();
 
+        }
+
+        private void EmptyRooms_Click(object sender, EventArgs e)
+        {
+            Room_Status rst = new Room_Status();
+            rst.Show();
         }
     }
 }

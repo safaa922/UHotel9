@@ -99,7 +99,7 @@
             RoomSearch.TabIndex = 93;
             RoomSearch.Text = "Search";
             RoomSearch.UseVisualStyleBackColor = false;
-            RoomSearch.Click += GuestSearch_Click;
+            RoomSearch.Click += RoomSearch_Click;
             // 
             // Room_Info_Report
             // 

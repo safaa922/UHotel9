@@ -18,7 +18,7 @@ namespace UHotel9
         private FormStack formStack = new FormStack();
         private void ShowNewForm()
         {
-            // Show the new form and push it onto the stack
+            
             var newForm = new AnotherForm(formStack);
             formStack.Push(newForm);
             newForm.Show();
@@ -35,7 +35,7 @@ namespace UHotel9
         private void button1_Click(object sender, EventArgs e)
         {
 
-            // ApplicationDbContext db = new ApplicationDbContext();
+           
             dataGridView1.ColumnCount = 4;
             dataGridView1.Columns[0].Name = "Room Number";
             dataGridView1.Columns[1].Name = "Room Type";
@@ -46,7 +46,7 @@ namespace UHotel9
             DateTime CurrentDateTime = DateTime.Now;
             using (var context = new ApplicationDbContext())
             {
-                var rooms = context.Rooms.ToList(); // Assuming "Rooms" is the DbSet property in your DbContext
+                var rooms = context.Rooms.ToList();
                 var occupiedRooms = context.Reservations
                  .Where(reservation => !(CurrentDateTime >= reservation.checkOutDate || CurrentDateTime <= reservation.checkInDate))
                  .Select(reservation => reservation.roomId)
@@ -60,7 +60,7 @@ namespace UHotel9
                     dataGridView1.Rows.Add(room.roomId, room.type, room.floorNumber, room.price);
                 }
 
-                //  dataGridView1.Rows.Add(room.roomId, room.type, room.floorNumber, room.price);
+              
             }
 
 
@@ -83,16 +83,15 @@ namespace UHotel9
         {
             var previousForm = formStack.Pop();
 
-            // Check if there is a previous form
+          
             if (previousForm != null)
             {
-                // Show the previous form
+                
                 previousForm.Show();
             }
             else
             {
-                // If there is no previous form, you might want to close the current form or take other actions.
-                // For example, you can close the current form:
+                
                 this.Close();
             }
         }

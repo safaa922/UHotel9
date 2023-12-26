@@ -18,13 +18,13 @@ namespace UHotel9
 {
     public partial class employee_Info_Report : Form
     {
-        // string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=UHotel;Integrated Security=True;Connect Timeout=30;Encrypt=False;";
+        
 
 
         private FormStack formStack = new FormStack();
         private void ShowNewForm()
         {
-            // Show the new form and push it onto the stack
+            
             var newForm = new AnotherForm(formStack);
             formStack.Push(newForm);
             newForm.Show();
@@ -76,7 +76,7 @@ namespace UHotel9
                         MessageBox.Show("Edit " + Selectedemployee.employeeFname);
                         Employee_Edit ee = new Employee_Edit(Selectedemployee);
                         ee.ShowDialog();
-                        this.Close();
+                        this.Hide();
                     }
                     else
                     {
@@ -118,7 +118,7 @@ namespace UHotel9
                             dataGridViewEmployee.DataSource = emp;
 
                             MessageBox.Show("Employee Data deleted successfully.");
-                            this.Close();
+                            this.Hide();
 
                         }
                     }
@@ -162,17 +162,14 @@ namespace UHotel9
         {
             var previousForm = formStack.Pop();
 
-            // Check if there is a previous form
             if (previousForm != null)
             {
-                // Show the previous form
+             
                 previousForm.Show();
             }
             else
             {
-                // If there is no previous form, you might want to close the current form or take other actions.
-                // For example, you can close the current form:
-                this.Close();
+                this.Hide();
             }
         }
 

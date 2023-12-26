@@ -1,15 +1,30 @@
-﻿using System;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.ComponentModel;
+//using System.Data;
+//using System.Data.Entity.Infrastructure;
+//using System.Drawing;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
+//using System.Windows.Forms;
+//using UHotel9.Tables;
+//using static UHotel9.Tables.Guest;
+using Microsoft.IdentityModel.Tokens;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.Entity.Infrastructure;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.EntityFrameworkCore;
+using System.Data.SqlClient;
 using UHotel9.Tables;
 using static UHotel9.Tables.Guest;
+
 
 namespace UHotel9
 {
@@ -18,7 +33,7 @@ namespace UHotel9
         private FormStack formStack = new FormStack();
         private void ShowNewForm()
         {
-            // Show the new form and push it onto the stack
+           
             var newForm = new AnotherForm(formStack);
             formStack.Push(newForm);
             newForm.Show();
@@ -30,11 +45,7 @@ namespace UHotel9
             InitializeComponent();
         }
 
-        //private void GuestReserveButton_Click(object sender, EventArgs e)
-        //{
-
-
-        //}
+        
 
        
         private void GuestSaveButton_Click(object sender, EventArgs e)
@@ -47,13 +58,11 @@ namespace UHotel9
                 Guest g1 = new Guest()
                 {
 
-                    // nametx is the name of the textbox
-                    // _Gender is casting male =0 and female =1
+                    
                     guestId = Guest_IdBox.Text,
                     guestFname = Guest_FNameBox.Text,
                     guestLname = Guest_LNameBox.Text,
-                    // Employye_UserName = Employee.UserNameBox.Text,
-                    // Password pass_tx.Text,
+                   
                     email = Guest_EmailBox.Text,
 
                     gender = (GuestGender)Guest_GenderBox.SelectedIndex,
@@ -129,7 +138,7 @@ namespace UHotel9
                 else
                 {
 
-                    // The value is not numeric
+                   
                     MessageBox.Show("Invalid Phone Number, Enter Only Numbers");
                     validationFlag++;
                 }
@@ -152,7 +161,7 @@ namespace UHotel9
                     db2.Guests.Add(g1);
                     db2.SaveChanges();
                     MessageBox.Show("added successfully");
-                    Reservation_Form r = new Reservation_Form(g1);
+                    Reservation_Form r = new Reservation_Form();
                     r.Show();
                     this.Hide();
                 }
@@ -166,22 +175,11 @@ namespace UHotel9
 
             catch (DbUpdateException ex)
             {
-                //var sqlException = ex.GetBaseException() as SqlException;
-                MessageBox.Show("this guest is already exsist");
+                
+                MessageBox.Show("this guest already exsist");
                 Reservation_Form r = new Reservation_Form();
                 r.Show();
-                this.Hide();
-                //if (ex.InnerException is SqlException sqlException && sqlException.Number == 2627)
-                //{
-                //    MessageBox.Show("this Guest is already exsits");
-
-                //}
-                //else
-                //{
-
-                //    MessageBox.Show("");
-                //   // throw ex;
-                //}
+               
             }
 
         }
@@ -190,16 +188,15 @@ namespace UHotel9
         {
             var previousForm = formStack.Pop();
 
-            // Check if there is a previous form
+           
             if (previousForm != null)
             {
-                // Show the previous form
+               
                 previousForm.Show();
             }
             else
             {
-                // If there is no previous form, you might want to close the current form or take other actions.
-                // For example, you can close the current form:
+               
                 this.Close();
             }
         }

@@ -134,6 +134,7 @@
             SaveButton.TabIndex = 100;
             SaveButton.Text = "Save";
             SaveButton.UseVisualStyleBackColor = true;
+            SaveButton.Click += SaveButton_Click_1;
             // 
             // RoomPriceEditBox
             // 

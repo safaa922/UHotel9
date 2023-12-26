@@ -32,29 +32,7 @@ namespace UHotel9
 
             base.OnModelCreating(modelBuilder);
 
-           // modelBuilder.Entity<Guest>()
-           //.Property(e => e.phone)
-           //.IsRequired()
-           // .HasColumnType("nvarchar(150)")
-           // .HasCheckConstraint("CK_YourEntity_NumericColumn", "[phone] LIKE '%[^0-9]%'");
-
-
-
-            // modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-
-            //modelBuilder.Entity<Employee>()
-            //    .Property(e => e.employeeAge)
-            //    .IsRequired()
-            //    .HasCheckConstraint("CheckConstraint", "employeeAge >= 0");
-
-
-            // Other configuratiEons...
-
-            // modelBuilder.Entity<Employee>()
-            //.Property(e => e.employeeAge)
-            //.IsRequired()
-            //.HasAnnotation(CheckConstraint, employeeAge >= 0);
-            // modelBuilder.Entity<Room>().ToTable("Rooms");
+          
 
         }
 

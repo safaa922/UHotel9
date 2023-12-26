@@ -36,6 +36,7 @@
             Home_Page_Label = new Label();
             FsReservationFormButton = new Button();
             pictureBox2 = new PictureBox();
+            EmptyRooms = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -71,7 +72,7 @@
             Dresrvation.FlatStyle = FlatStyle.Popup;
             Dresrvation.Font = new Font("Cocon® Next Arabic", 12.75F);
             Dresrvation.ForeColor = Color.Coral;
-            Dresrvation.Location = new Point(109, 348);
+            Dresrvation.Location = new Point(107, 329);
             Dresrvation.Name = "Dresrvation";
             Dresrvation.Size = new Size(160, 40);
             Dresrvation.TabIndex = 96;
@@ -86,7 +87,7 @@
             FsShowRoomInfoButton.FlatStyle = FlatStyle.Popup;
             FsShowRoomInfoButton.Font = new Font("Cocon® Next Arabic", 12.75F);
             FsShowRoomInfoButton.ForeColor = Color.Coral;
-            FsShowRoomInfoButton.Location = new Point(109, 289);
+            FsShowRoomInfoButton.Location = new Point(107, 270);
             FsShowRoomInfoButton.Name = "FsShowRoomInfoButton";
             FsShowRoomInfoButton.Size = new Size(160, 40);
             FsShowRoomInfoButton.TabIndex = 94;
@@ -113,7 +114,7 @@
             FsReservationFormButton.FlatStyle = FlatStyle.Popup;
             FsReservationFormButton.Font = new Font("Cocon® Next Arabic", 12.75F);
             FsReservationFormButton.ForeColor = Color.Coral;
-            FsReservationFormButton.Location = new Point(109, 225);
+            FsReservationFormButton.Location = new Point(107, 206);
             FsReservationFormButton.Name = "FsReservationFormButton";
             FsReservationFormButton.Size = new Size(160, 40);
             FsReservationFormButton.TabIndex = 92;
@@ -132,6 +133,21 @@
             pictureBox2.TabIndex = 98;
             pictureBox2.TabStop = false;
             // 
+            // EmptyRooms
+            // 
+            EmptyRooms.BackColor = Color.Transparent;
+            EmptyRooms.BackgroundImageLayout = ImageLayout.Stretch;
+            EmptyRooms.FlatStyle = FlatStyle.Popup;
+            EmptyRooms.Font = new Font("Cocon® Next Arabic", 12.75F);
+            EmptyRooms.ForeColor = Color.Coral;
+            EmptyRooms.Location = new Point(107, 386);
+            EmptyRooms.Name = "EmptyRooms";
+            EmptyRooms.Size = new Size(160, 40);
+            EmptyRooms.TabIndex = 99;
+            EmptyRooms.Text = "Free Rooms";
+            EmptyRooms.UseVisualStyleBackColor = false;
+            EmptyRooms.Click += EmptyRooms_Click;
+            // 
             // Front_Office
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -139,6 +155,7 @@
             BackColor = Color.FromArgb(224, 224, 224);
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(800, 491);
+            Controls.Add(EmptyRooms);
             Controls.Add(pictureBox2);
             Controls.Add(BackButton_Edit);
             Controls.Add(Dresrvation);
@@ -163,5 +180,6 @@
         private Label Home_Page_Label;
         private Button FsReservationFormButton;
         private PictureBox pictureBox2;
+        private Button EmptyRooms;
     }
 }

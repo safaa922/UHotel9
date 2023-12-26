@@ -68,7 +68,6 @@
             groupBox1.Size = new Size(551, 436);
             groupBox1.TabIndex = 14;
             groupBox1.TabStop = false;
-            groupBox1.Enter += groupBox1_Enter_1;
             // 
             // BackButton_Edit
             // 
@@ -81,7 +80,6 @@
             BackButton_Edit.Size = new Size(35, 33);
             BackButton_Edit.TabIndex = 92;
             BackButton_Edit.UseVisualStyleBackColor = false;
-            BackButton_Edit.Click += BackButton_Edit_Click;
             // 
             // pictureBox1
             // 
@@ -201,7 +199,7 @@
             totalCost.TabIndex = 93;
             totalCost.Text = "Total Cost";
             totalCost.UseVisualStyleBackColor = true;
-            totalCost.Click += totalCost_Click_1;
+            totalCost.Click += totalCost_Click;
             // 
             // label4
             // 
@@ -214,7 +212,6 @@
             label4.Size = new Size(341, 65);
             label4.TabIndex = 11;
             label4.Text = "Reservation Form";
-            label4.Click += label4_Click;
             // 
             // label5
             // 
@@ -254,7 +251,6 @@
             Controls.Add(groupBox1);
             Name = "Reservation_Form";
             Text = "Reservation_Form";
-            Load += Reservation_Form_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

@@ -91,7 +91,7 @@ namespace UHotel9
         {
             var previousForm = formStack.Pop();
 
-            // Check if there is a previous form
+            
             if (previousForm != null)
             {
                 // Show the previous form
@@ -99,8 +99,7 @@ namespace UHotel9
             }
             else
             {
-                // If there is no previous form, you might want to close the current form or take other actions.
-                // For example, you can close the current form:
+               
                 this.Close();
             }
         }

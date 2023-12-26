@@ -18,7 +18,7 @@ namespace UHotel9
         private FormStack formStack = new FormStack();
         private void ShowNewForm()
         {
-            // Show the new form and push it onto the stack
+           
             var newForm = new AnotherForm(formStack);
             formStack.Push(newForm);
             newForm.Show();
@@ -33,44 +33,10 @@ namespace UHotel9
         {
             InitializeComponent();
             this.selectedDate = selectedDate;
-            //PopulateRevenueGrid();
+            
         }
 
-        private void totalRevenueToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            decimal totalPrice = 0;
-            using (var dbContext = new ApplicationDbContext())
-            {
-                var reservations = dbContext.Reservations
-                    .Where(r => r.checkInDate >= selectedDate && r.checkInDate <= DateTime.Now)
-                    .ToList();
-
-                var revenueData = reservations.Select(r => new
-                {
-                    ReservationId = r.reservationId,
-                    RoomId = r.roomId,
-                    Price = dbContext.Rooms.FirstOrDefault(room => room.roomId == r.roomId)?.price
-                }).ToList();
-
-                totalPrice = (decimal)revenueData.Sum(item => item.Price);
-
-                // Create a new row for total price
-                var totalRow = new
-                {
-                    ReservationId = "Total", // You can customize this based on your data
-                    RoomId = "",             // You can customize this based on your data
-                    Price = totalPrice
-                };
-
-                // Create a new list and add both detailed data and total row
-                var combinedData = new List<object>(revenueData);
-                combinedData.Add(totalRow);
-
-                // Set DataGridView data source to the combinedData list
-                revenueDataGridView.DataSource = combinedData;
-                revenueDataGridView.AutoGenerateColumns = true;
-            }
-        }
+        
 
         private void showRevenueToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -78,11 +44,7 @@ namespace UHotel9
             {
 
                 PopulateRevenueGrid();
-                //// Use the dbContext here
-                //Accountant accountantForm = new Accountant();
-                //var reservationBeforeSelectedDate = accountantForm.GetReservationsBeforeSelectedDate(selectedDate).ToList(); // Convert query result to a list
-                //revenueDataGridView.DataSource = reservationBeforeSelectedDate;
-                //revenueDataGridView.AutoGenerateColumns = true;
+                
 
             }
 
@@ -94,7 +56,7 @@ namespace UHotel9
         }
         private void PopulateRevenueGrid()
         {
-            //decimal totalPrice = 0;
+           
             using (var dbContext = new ApplicationDbContext())
             {
                 var reservations = dbContext.Reservations
@@ -110,110 +72,68 @@ namespace UHotel9
                     Price = dbContext.Rooms.FirstOrDefault(room => room.roomId == r.roomId)?.price
                 }).ToList();
 
-                //totalPrice = (decimal)revenueData.Sum(item => item.Price);
-
-                // Create a new row for total price
-                //var totalRow = new
-                //{
-                //    ReservationId = "Total", // You can customize this based on your data
-                //    RoomId = "",             // You can customize this based on your data
-                //    Price = totalPrice
-                //};
-
-                // Create a new list and add both detailed data and total row
-                // var combinedData = new List<object>(revenueData);
-                // combinedData.Add(totalRow);
-
-                //revenueDataGridView.ColumnCount = 5;
-                //revenueDataGridView.Columns[0].Name = "Reservation number";
-                //revenueDataGridView.Columns[1].Name = "Room number";
-                //revenueDataGridView.Columns[2].Name = "Check in date";
-                //revenueDataGridView.Columns[3].Name = "Check out date";
-                //revenueDataGridView.Columns[4].Name = "Room price";
-                // Set DataGridView data source to the combinedData list
+                
                 revenueDataGridView.DataSource = revenueData;
                 revenueDataGridView.AutoGenerateColumns = true;
                 revenueDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
-            //decimal totalPrice = 0;
-            //using (var dbContext = new ApplicationDbContext())
-            //{
-            //    var reservations = dbContext.Reservations
-            //        .Where(r => r.checkInDate >= selectedDate && r.checkInDate <= DateTime.Now)
-            //        .ToList();
-
-            //    var revenueData = reservations.Select(r => new
-            //    {
-            //        ReservationId = r.reservationId,
-            //        RoomId = r.roomId,
-            //        Price = dbContext.Rooms.FirstOrDefault(room => room.roomId == r.roomId)?.price
-            //    }).ToList();
-
-            //    revenueDataGridView.DataSource = revenueData;
-            //    revenueDataGridView.AutoGenerateColumns = true;
-            // //   var item = new Room();
-            //    totalPrice = (decimal)revenueData.Sum(item => item.Price);
-
-
-            //}
-
+           
         }
 
         private void totalRevenueToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            decimal totalRevenue = 0;
-            using (var dbContext = new ApplicationDbContext())
+            try
             {
-                var reservations = dbContext.Reservations
-                    .Where(r => r.checkInDate >= selectedDate && r.checkInDate <= DateTime.Now)
-                    .ToList();
-
-                foreach (var reservation in reservations)
+                decimal totalRevenue = 0;
+                using (var dbContext = new ApplicationDbContext())
                 {
-                    // Calculate staying days
-                    int stayingDays = (int)(reservation.checkOutDate - reservation.checkInDate).TotalDays;
+                    var reservations = dbContext.Reservations
+                        .Where(r => r.checkInDate >= selectedDate && r.checkInDate <= DateTime.Now)
+                        .ToList();
+                    if (reservations.Any())
+                    {
+                        foreach (var reservation in reservations)
+                        {
 
-                    // Retrieve room price from the Rooms table
-                    decimal roomPrice = dbContext.Rooms.FirstOrDefault(room => room.roomId == reservation.roomId)?.price ?? 0;
+                            int stayingDays = (int)(reservation.checkOutDate - reservation.checkInDate).TotalDays;
 
-                    // Calculate total price for the reservation
-                    decimal totalPriceForReservation = stayingDays * roomPrice;
 
-                    // Accumulate total revenue
-                    totalRevenue += totalPriceForReservation;
+                            decimal? roomPrice = dbContext.Rooms.FirstOrDefault(room => room.roomId == reservation.roomId)?.price;
+
+                            if (roomPrice.HasValue)
+                            {
+
+                                decimal totalPriceForReservation = stayingDays * roomPrice.Value;
+
+                                totalRevenue += totalPriceForReservation;
+                            }
+
+                        }
+
+                        var revenueData = reservations.Select(r => new
+                        {
+                            ReservationId = r.reservationId,
+                            RoomId = r.roomId,
+                            StayingDays = (int)(r.checkOutDate - r.checkInDate).TotalDays,
+                            RoomPrice = dbContext.Rooms.FirstOrDefault(room => room.roomId == r.roomId)?.price,
+                            TotalPrice = (int)(r.checkOutDate - r.checkInDate).TotalDays * dbContext.Rooms.FirstOrDefault(room => room.roomId == r.roomId)?.price
+                        }).ToList();
+                        //add row
+
+                        revenueDataGridView.DataSource = revenueData;
+
+                        revenueDataGridView.AutoGenerateColumns = true;
+                    }
+
+                    else
+                    {
+                        MessageBox.Show("No reservations found for the selected period");
+                    }
                 }
-
-                // Display total revenue or use it as needed
-                // Console.WriteLine("Total Revenue: " + totalRevenue);
-
-                // Display detailed revenue data in the DataGridView (if needed)
-                var revenueData = reservations.Select(r => new
-                {
-                    ReservationId = r.reservationId,
-                    RoomId = r.roomId,
-                    StayingDays = (int)(r.checkOutDate - r.checkInDate).TotalDays,
-                    RoomPrice = dbContext.Rooms.FirstOrDefault(room => room.roomId == r.roomId)?.price ?? 0,
-                    TotalPrice = (int)(r.checkOutDate - r.checkInDate).TotalDays * dbContext.Rooms.FirstOrDefault(room => room.roomId == r.roomId)?.price
-                }).ToList();
-
-                var totalRow = new
-                {
-                    ReservationId = "Total", // You can customize this based on your data
-                    RoomId = "",             // You can customize this based on your data
-                    StayingDays = "",
-                    RoomPrice = "",
-                    TotalPrice = totalRevenue
-                };
-
-                // Create a new list and add both detailed data and total row
-                var combinedData = new List<object>(revenueData);
-                combinedData.Add(totalRow);
-
-                // Set DataGridView data source to the combinedData list
-                revenueDataGridView.DataSource = combinedData;
-
-                //revenueDataGridView.DataSource = revenueData;
-                revenueDataGridView.AutoGenerateColumns = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -226,16 +146,13 @@ namespace UHotel9
         {
             var previousForm = formStack.Pop();
 
-            // Check if there is a previous form
+            
             if (previousForm != null)
             {
-                // Show the previous form
                 previousForm.Show();
             }
             else
             {
-                // If there is no previous form, you might want to close the current form or take other actions.
-                // For example, you can close the current form:
                 this.Close();
             }
         }

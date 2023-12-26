@@ -33,28 +33,32 @@ namespace UHotel9
             this.guest = guest;
         }
 
-      
+
 
         private void GuestSaveButton_Click_1(object sender, EventArgs e)
         {
-            Guest EditedGuest = context.Guests.Where(gt => gt.guestId == this.guest.guestId).FirstOrDefault();
+            Guest editedGuest = context.Guests.FirstOrDefault(gt => gt.guestId == this.guest.guestId);
 
-            this.guest.guestId = Guest_IdBoxEdit.Text;
-            this.guest.guestFname = Guest_FNameBoxEdit.Text;
-            this.guest.guestLname = Guest_LNameBoxEdit.Text;
+            if (editedGuest != null)
+            {
+                editedGuest.guestFname = Guest_FNameBoxEdit.Text;
+                editedGuest.guestLname = Guest_LNameBoxEdit.Text;
+                editedGuest.email = Guest_EmailBoxEdit.Text;
+                editedGuest.gender = (GuestGender)Guest_GenderBoxEdit.SelectedIndex;
+                editedGuest.city = Guest_CityBoxEdit.Text;
+                editedGuest.country = Guest_CountryBoxEdit.Text;
+                editedGuest.phone = Guest_PhoneBoxEdit.Text;
+                editedGuest.roomId = int.Parse(GuestRoomNumberBoxEdit.Text);
+                editedGuest.status = (Status)GuestStatusBoxEdit.SelectedIndex;
 
-            this.guest.email = Guest_EmailBoxEdit.Text;
+                context.SaveChanges(); // Save the changes to the database
 
-            this.guest.gender = (GuestGender)Guest_GenderBoxEdit.SelectedIndex;
-
-            this.guest.city = Guest_CityBoxEdit.Text;
-            this.guest.country = Guest_CountryBoxEdit.Text;
-
-            this.guest.phone = Guest_PhoneBoxEdit.Text;
-            this.guest.roomId = int.Parse(GuestRoomNumberBoxEdit.Text);
-            this.guest.status = (Status)GuestStatusBoxEdit.SelectedIndex;
-            MessageBox.Show("Done");
-
+                MessageBox.Show("Edits saved successfully.");
+            }
+            else
+            {
+                MessageBox.Show("Guest not found in the database.");
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -20,7 +20,7 @@ namespace UHotel9
         private FormStack formStack = new FormStack();
         private void ShowNewForm()
         {
-            // Show the new form and push it onto the stack
+            
             var newForm = new AnotherForm(formStack);
             formStack.Push(newForm);
             newForm.Show();
@@ -30,17 +30,17 @@ namespace UHotel9
         public Room_Info_Report()
         {
             InitializeComponent();
-            RoomsData = new List<Room>(); // Initialize RoomsData list
+            RoomsData = new List<Room>();
         }
 
 
         private void ShowRoomInfoButton_Click(object sender, EventArgs e)
         {
             ApplicationDbContext db = new ApplicationDbContext();
-            RoomsData = db.Rooms.ToList(); // Assign data directly to the class-level variable
+            RoomsData = db.Rooms.ToList(); 
             RoomGridView.DataSource = RoomsData;
             RoomGridView.Columns.Add(new DataGridViewButtonColumn { Text = "Edit", Name = "Edit", UseColumnTextForButtonValue = true });
-            RoomGridView.Columns.Add(new DataGridViewButtonColumn { Text = "Show", Name = "Show", UseColumnTextForButtonValue = true });
+          //  RoomGridView.Columns.Add(new DataGridViewButtonColumn { Text = "Show", Name = "Show", UseColumnTextForButtonValue = true });
             RoomGridView.Columns.Add(new DataGridViewButtonColumn { Text = "Delete", Name = "Delete", UseColumnTextForButtonValue = true });
             RoomGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
@@ -55,10 +55,10 @@ namespace UHotel9
 
                 Room Selected = db.Rooms.Where(r => r.roomId == r_ID).FirstOrDefault();
 
-                if (e.ColumnIndex == RoomGridView.Columns["Show"].Index)
-                {
-                    MessageBox.Show("Show");
-                }
+                //if (e.ColumnIndex == RoomGridView.Columns["Show"].Index)
+                //{
+                //    MessageBox.Show("Show");
+                //}
                 if (e.ColumnIndex == RoomGridView.Columns["Edit"].Index)
                 {
                     if (Selected != null)
@@ -66,13 +66,13 @@ namespace UHotel9
                         MessageBox.Show("Edit Room Number " + Selected.roomId);
                         RoomsEdit re = new RoomsEdit(Selected);
                         re.ShowDialog();
-                        this.Close();
+                        this.Hide();
 
                     }
 
 
                 }
-                //exception 
+               
                 if (e != null && RoomGridView.Columns["Delete"] != null && e.ColumnIndex == RoomGridView.Columns["Delete"].Index)
                 {
 
@@ -82,19 +82,19 @@ namespace UHotel9
                         DialogResult result = MessageBox.Show("Are you sure you want to delete this room?", "Confirmation", MessageBoxButtons.YesNo);
                         if (result == DialogResult.Yes)
                         {
-                            // Delete the room from the database
+                          
                             db.Rooms.Remove(Selected);
                             db.SaveChanges();
 
-                            // Delete the room from the data source
+                            
                             RoomsData.Remove(Selected);
 
-                            // Rebind the data source to refresh the DataGridView
+                           
                             RoomGridView.DataSource = null;
                             RoomGridView.DataSource = RoomsData;
 
                             MessageBox.Show("Room deleted successfully.");
-                            this.Close();
+                            this.Hide();
 
                         }
                     }
@@ -108,21 +108,19 @@ namespace UHotel9
         {
             var previousForm = formStack.Pop();
 
-            // Check if there is a previous form
+            
             if (previousForm != null)
             {
-                // Show the previous form
+               
                 previousForm.Show();
             }
             else
             {
-                // If there is no previous form, you might want to close the current form or take other actions.
-                // For example, you can close the current form:
-                this.Close();
+                this.Hide();
             }
         }
 
-        private void GuestSearch_Click(object sender, EventArgs e)
+        private void RoomSearch_Click(object sender, EventArgs e)
         {
 
             if (string.IsNullOrEmpty(RoomSearchTextBox.Text))
@@ -138,14 +136,14 @@ namespace UHotel9
             }
 
             var context = new ApplicationDbContext();
-            var room = context.Rooms.FirstOrDefault(r=>r.roomId.Equals(r_ID.ToString()));
+            var room = context.Rooms.FirstOrDefault(RoomsData => RoomsData.roomId.Equals(r_ID.ToString()));
 
             if (room != null)
             {
                 RoomGridView.DataSource = new List<Room> { room };
                 RoomGridView.Columns["Edit"].Visible = true;
                 RoomGridView.Columns["Delete"].Visible = true;
-                RoomGridView.Columns["Show"].Visible = true;
+               
             }
             else
             {

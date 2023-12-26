@@ -1,13 +1,28 @@
-﻿using System;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.ComponentModel;
+//using System.Data;
+//using System.Data.Entity.Infrastructure;
+//using System.Drawing;
+//using System.Linq;
+//using System.Text;
+//using System.Text.RegularExpressions;
+//using System.Threading.Tasks;
+//using System.Windows.Forms;
+//using UHotel9.Tables;
+//using static UHotel9.Employee_Registration;
+//using BCryptNet = BCrypt.Net.BCrypt;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.Entity.Infrastructure;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.EntityFrameworkCore;
 using UHotel9.Tables;
 using static UHotel9.Employee_Registration;
 using BCryptNet = BCrypt.Net.BCrypt;
@@ -258,6 +273,17 @@ namespace UHotel9
                     c++;
                     MessageBox.Show("Invalid Salary");
                 }
+                if (IsValidEmail(Employee_EmailBox.Text))
+                {
+
+                }
+                else
+                {
+                    //Console.WriteLine("Email is not valid.");
+                    MessageBox.Show("Email is not valid.");
+                    c++;
+
+                }
                 if (c == 0)
                 {
                     db.Employees.Add(e1);
@@ -272,6 +298,18 @@ namespace UHotel9
                     Employee_Log_In l = new Employee_Log_In();
                     l.Show();
                     this.Hide();
+
+                }
+                static bool IsValidEmail(string email)
+                {
+                    // Define a regular expression for email validation
+                    string pattern = @"^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+(?:\.[a-zA-Z]{2,}){1,3}$";
+
+                    // Create a Regex object
+                    Regex regex = new Regex(pattern);
+
+                    // Use the IsMatch method to validate the email
+                    return regex.IsMatch(email);
 
                 }
             }
@@ -296,6 +334,7 @@ namespace UHotel9
 
 
                 MessageBox.Show("all fields are required");
+                
             }
 
             catch (DbUpdateException ex)

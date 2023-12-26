@@ -51,7 +51,7 @@
             revenue.Size = new Size(66, 21);
             revenue.TabIndex = 0;
             revenue.Text = "Revenue";
-            revenue.Click += label1_Click;
+          //  revenue.Click += label1_Click;
             // 
             // revenueButton
             // 

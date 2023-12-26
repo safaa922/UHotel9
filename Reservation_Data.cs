@@ -56,12 +56,11 @@ namespace UHotel9
         {
             var context = new ApplicationDbContext();
             var guests = context.Reservations.ToList();
-            if (e != null && ReservationReportGridView.Columns["Delete"] != null && e.ColumnIndex == ReservationReportGridView.Columns["Delete"].Index)
-
-            {
+           
                 var row = ReservationReportGridView.Rows[e.RowIndex];
                 int rr_id = (int)row.Cells["reservationId"].Value;
                 Reservation Selected_Reservation = context.Reservations.Where(r => r.roomId == rr_id).FirstOrDefault();
+
 
                 if (e.ColumnIndex == ReservationReportGridView.Columns["Edit"].Index)
                 {
@@ -100,7 +99,7 @@ namespace UHotel9
                         }
                     }
                 }
-            }
+            
         }
 
         private void BackButton_Edit_Click(object sender, EventArgs e)

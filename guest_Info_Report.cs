@@ -31,6 +31,7 @@ namespace UHotel9
         public guest_Info_Report()
         {
             InitializeComponent();
+          //  GuestDataGrid.CellContentClick += dataGridView1_CellContentClick_1;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -92,6 +93,11 @@ namespace UHotel9
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
+            if (GuestDataGrid == null)
+            {
+                
+                return;
+            }
 
             var context = new ApplicationDbContext();
             var guests = context.Guests.ToList();
@@ -107,22 +113,18 @@ namespace UHotel9
                         MessageBox.Show("Edit" + SelectedGuest.guestFname);
                         Guest_Edit_Form ef = new Guest_Edit_Form(SelectedGuest);
                         ef.ShowDialog();
-                        this.Close();
+                        this.Hide();
                     }
 
                 }
-                if (e.ColumnIndex == GuestDataGrid.Columns["Show"].Index)
-                {
-                    if (SelectedGuest != null)
-                    {
-                        MessageBox.Show("Show" + SelectedGuest.guestFname);
-                        ViewGuests viewGuests = new ViewGuests(SelectedGuest);
-                        viewGuests.ShowDialog();
-                    }
-
-                }
-                if (e != null && GuestDataGrid.Columns["Delete"] != null && e.ColumnIndex == GuestDataGrid.Columns["Delete"].Index)
-                {
+            if (e.ColumnIndex >= 0 && e.ColumnIndex < GuestDataGrid.Columns.Count && GuestDataGrid.Columns[e.ColumnIndex].HeaderText == "Show")
+            {
+                MessageBox.Show("Show" + SelectedGuest.guestFname);
+                ViewGuests viewGuests = new ViewGuests(SelectedGuest);
+                viewGuests.ShowDialog();
+            }
+            if (e.ColumnIndex >= 0 && e.ColumnIndex < GuestDataGrid.Columns.Count && GuestDataGrid.Columns[e.ColumnIndex].HeaderText == "Delete")
+            {
 
 
                     if (SelectedGuest != null)
@@ -142,7 +144,7 @@ namespace UHotel9
                             GuestDataGrid.DataSource = guests;
 
                             MessageBox.Show("Guest Info deleted successfully.");
-                            this.Close();
+                            this.Hide();
 
                         }
                     }
@@ -196,7 +198,7 @@ namespace UHotel9
             {
                 // If there is no previous form, you might want to close the current form or take other actions.
                 // For example, you can close the current form:
-                this.Close();
+                this.Hide();
             }
         }
     }
