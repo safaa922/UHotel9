@@ -36,7 +36,7 @@
             CheckOutDateBox = new DateTimePicker();
             RoomIDReservationBox = new TextBox();
             GuestIDReservationBox = new TextBox();
-            NextButton = new Button();
+            Confirm = new Button();
             label1 = new Label();
             GuestReservationLabel = new Label();
             label2 = new Label();
@@ -58,7 +58,7 @@
             groupBox1.Controls.Add(CheckOutDateBox);
             groupBox1.Controls.Add(RoomIDReservationBox);
             groupBox1.Controls.Add(GuestIDReservationBox);
-            groupBox1.Controls.Add(NextButton);
+            groupBox1.Controls.Add(Confirm);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(GuestReservationLabel);
             groupBox1.Controls.Add(label2);
@@ -122,20 +122,20 @@
             GuestIDReservationBox.Size = new Size(143, 16);
             GuestIDReservationBox.TabIndex = 1;
             // 
-            // NextButton
+            // Confirm
             // 
-            NextButton.BackgroundImage = (Image)resources.GetObject("NextButton.BackgroundImage");
-            NextButton.BackgroundImageLayout = ImageLayout.Stretch;
-            NextButton.FlatStyle = FlatStyle.Flat;
-            NextButton.Font = new Font("Segoe Print", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            NextButton.ForeColor = SystemColors.Info;
-            NextButton.Location = new Point(163, 327);
-            NextButton.Name = "NextButton";
-            NextButton.Size = new Size(225, 50);
-            NextButton.TabIndex = 9;
-            NextButton.Text = "Next";
-            NextButton.UseVisualStyleBackColor = true;
-            NextButton.Click += NextButton_Click_1;
+            Confirm.BackgroundImage = (Image)resources.GetObject("Confirm.BackgroundImage");
+            Confirm.BackgroundImageLayout = ImageLayout.Stretch;
+            Confirm.FlatStyle = FlatStyle.Flat;
+            Confirm.Font = new Font("Segoe Print", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Confirm.ForeColor = SystemColors.Info;
+            Confirm.Location = new Point(163, 327);
+            Confirm.Name = "Confirm";
+            Confirm.Size = new Size(225, 50);
+            Confirm.TabIndex = 9;
+            Confirm.Text = "Confirm";
+            Confirm.UseVisualStyleBackColor = true;
+            Confirm.Click += NextButton_Click_1;
             // 
             // label1
             // 
@@ -265,7 +265,7 @@
         private DateTimePicker CheckOutDateBox;
         private TextBox RoomIDReservationBox;
         private TextBox GuestIDReservationBox;
-        private Button NextButton;
+        private Button Confirm;
         private Label label1;
         private Label GuestReservationLabel;
         private Label label2;

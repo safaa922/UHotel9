@@ -11,7 +11,7 @@ namespace UHotel9
             
             ApplicationConfiguration.Initialize();
           
-            Application.Run(new Reservation_Form());
+            Application.Run(new Front_Office());
             
 
         }

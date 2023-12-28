@@ -97,9 +97,9 @@ namespace UHotel9
                     db.Reservations.Add(rs);
                     db.SaveChanges();
                     MessageBox.Show("Done^_-");
-                    GuestForm s = new GuestForm();
-                    s.Show();
-                     this.Hide();
+                    //GuestForm s = new GuestForm();
+                    //s.Show();
+                    // this.Hide();
                 }
             }
             catch (FormatException)

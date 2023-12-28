@@ -197,7 +197,7 @@ namespace UHotel9
             else
             {
                
-                this.Close();
+                this.Hide();
             }
         }
     }

@@ -80,8 +80,8 @@ namespace UHotel9
 
         private void FsReservationFormButton_Click(object sender, EventArgs e)
         {
-            Reservation_Form rr = new Reservation_Form();
-            rr.Show();
+            GuestForm gf = new GuestForm();
+            gf.Show();
         }
 
         private void FsShowRoomInfoButton_Click(object sender, EventArgs e)

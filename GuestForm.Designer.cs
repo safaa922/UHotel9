@@ -33,7 +33,7 @@
             pictureBox1 = new PictureBox();
             BackButton_Edit = new Button();
             RoomFormLabel = new Label();
-            GuestSaveButton = new Button();
+            GuestNextButton = new Button();
             GuestRoomNumberBox = new TextBox();
             RoomNumLabel = new Label();
             GuestStatusBox = new ComboBox();
@@ -64,7 +64,7 @@
             groupBox1.Controls.Add(pictureBox1);
             groupBox1.Controls.Add(BackButton_Edit);
             groupBox1.Controls.Add(RoomFormLabel);
-            groupBox1.Controls.Add(GuestSaveButton);
+            groupBox1.Controls.Add(GuestNextButton);
             groupBox1.Controls.Add(GuestRoomNumberBox);
             groupBox1.Controls.Add(RoomNumLabel);
             groupBox1.Controls.Add(GuestStatusBox);
@@ -129,21 +129,21 @@
             RoomFormLabel.TabIndex = 88;
             RoomFormLabel.Text = "Guests Form";
             // 
-            // GuestSaveButton
+            // GuestNextButton
             // 
-            GuestSaveButton.BackColor = Color.Goldenrod;
-            GuestSaveButton.BackgroundImage = (Image)resources.GetObject("GuestSaveButton.BackgroundImage");
-            GuestSaveButton.BackgroundImageLayout = ImageLayout.Stretch;
-            GuestSaveButton.FlatStyle = FlatStyle.Flat;
-            GuestSaveButton.Font = new Font("AlHadari ", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 178);
-            GuestSaveButton.ForeColor = SystemColors.ControlLightLight;
-            GuestSaveButton.Location = new Point(259, 521);
-            GuestSaveButton.Name = "GuestSaveButton";
-            GuestSaveButton.Size = new Size(199, 50);
-            GuestSaveButton.TabIndex = 87;
-            GuestSaveButton.Text = "Save";
-            GuestSaveButton.UseVisualStyleBackColor = false;
-            GuestSaveButton.Click += GuestSaveButton_Click;
+            GuestNextButton.BackColor = Color.Goldenrod;
+            GuestNextButton.BackgroundImage = (Image)resources.GetObject("GuestNextButton.BackgroundImage");
+            GuestNextButton.BackgroundImageLayout = ImageLayout.Stretch;
+            GuestNextButton.FlatStyle = FlatStyle.Flat;
+            GuestNextButton.Font = new Font("AlHadari ", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 178);
+            GuestNextButton.ForeColor = SystemColors.ControlLightLight;
+            GuestNextButton.Location = new Point(259, 521);
+            GuestNextButton.Name = "GuestNextButton";
+            GuestNextButton.Size = new Size(199, 50);
+            GuestNextButton.TabIndex = 87;
+            GuestNextButton.Text = "Next";
+            GuestNextButton.UseVisualStyleBackColor = false;
+            GuestNextButton.Click += GuestSaveButton_Click;
             // 
             // GuestRoomNumberBox
             // 
@@ -369,7 +369,7 @@
         #endregion
         private GroupBox groupBox1;
         private Label RoomFormLabel;
-        private Button GuestSaveButton;
+        private Button GuestNextButton;
         private TextBox GuestRoomNumberBox;
         private Label RoomNumLabel;
         private ComboBox GuestStatusBox;
